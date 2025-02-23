@@ -29,15 +29,16 @@ export class LeadsComponent implements OnInit {
   }
 
   fetchLeads(): void {
-    this.loading = true; // Start loading
+    this.loading = true;
     this.leadsService.getLeads().subscribe(data => {
       this.leads = data;
-      this.loading = false; // Stop loading
+      this.loading = false;
     }, error => {
-      this.loading = false; // Stop loading on error
+      this.loading = false;
     });
   }
 
+  // Submit a new lead
   onSubmit(): void {
     this.errorMessage = null;
     if (this.leadForm.invalid) {
@@ -45,11 +46,11 @@ export class LeadsComponent implements OnInit {
       return;
     }
 
-    this.loading = true; // Start loading
+    this.loading = true;
     this.leadsService.submitLead(this.leadForm.value).pipe(
       catchError(error => {
         this.errorMessage = error?.error?.message ?? 'An unexpected error occurred.';
-        this.loading = false; // Stop loading on error
+        this.loading = false;
         return of(null);
       })
     ).subscribe(response => {
@@ -57,7 +58,7 @@ export class LeadsComponent implements OnInit {
         this.fetchLeads();
         this.leadForm.reset();
       }
-      this.loading = false; // Stop loading
+      this.loading = false;
     });
   }
 

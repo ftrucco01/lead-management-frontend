@@ -46,7 +46,7 @@ This project uses Angular's built-in environment files to manage the API base UR
 ```typescript
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8000/leads',
+  apiUrl: 'http://localhost:8080/leads',
 };
 ```
 
@@ -55,7 +55,7 @@ I use the same apiUrl for both development and production environments for this 
 ```typescript
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:8000/leads'
+  apiUrl: 'http://localhost:8080/leads'
 };
 ```
 > ℹ️ **Note:** No `.env` file is used. Angular handles environments through these TypeScript files.
